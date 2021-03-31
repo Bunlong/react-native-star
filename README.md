@@ -37,5 +37,7 @@ Run the example app on iOS:
 Run the example app on Android:
 
   $ yarn example android
-  
+
+https://reactnative.dev/docs/running-on-device
+
 -->
