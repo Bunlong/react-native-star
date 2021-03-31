@@ -43,3 +43,11 @@ Run the example app on Android:
 https://reactnative.dev/docs/running-on-device
 
 -->
+
+
+<!--
+
+$ lsusb
+$ adb devices
+
+-->

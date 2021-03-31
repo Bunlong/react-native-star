@@ -91,7 +91,9 @@ class Icon extends React.PureComponent<Props> {
     return (
       <View
         style={
-          index === 0 ? Object.assign({}, styles.style, { marginLeft: 0 }) : styles.style
+          index === 0
+            ? Object.assign({}, styles.style, { marginLeft: 0 })
+            : styles.style
         }
         {...panResponder.panHandlers}
       >
