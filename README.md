@@ -25,3 +25,19 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 ## License
 
 MIT
+
+<!--
+
+Get started with the project:
+
+  $ yarn
+
+Run the example app on iOS:
+
+  $ yarn example ios
+
+Run the example app on Android:
+
+  $ yarn example android
+  
+-->

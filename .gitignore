@@ -29,6 +29,10 @@ DerivedData
 *.xcuserstate
 project.xcworkspace
 
+# example
+#
+example/node_modules
+
 # Android/IJ
 #
 .idea
