@@ -113,10 +113,7 @@ class StarIcon extends React.PureComponent<Props, State> {
 
   render() {
     const {
-      // id,
       style,
-      // className,
-      // tabIndex,
       readOnly,
       totalIcons,
       emptyIcon,
