@@ -36,6 +36,7 @@ Run the example app on iOS:
 
 Run the example app on Android:
 
+  $ react-native run-android
   $ yarn example android
   $ react-native start
 

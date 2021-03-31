@@ -1,6 +1,11 @@
 import React from 'react';
+import {
+  StyleSheet,
+  View,
+  ViewStyle,
+  PanResponder
+} from 'react-native';
 import { renderIcon } from './utils';
-import { View, ViewStyle, PanResponder } from 'react-native';
 
 interface Props {
   index: number;
@@ -27,25 +32,23 @@ class Icon extends React.PureComponent<Props> {
       icon,
     } = this.props;
     const showbgIcon = percent < 100;
-    const bgIconContainerStyle = showbgIcon
-      ? {}
-      : ({
-          visibility: 'hidden',
-        } as ViewStyle);
-    const iconContainerStyle = {
-      flexDirection: 'row', // display: 'inline-block',
-      position: 'absolute',
-      overflow: 'hidden',
-      top: 0,
-      ['left']: 0,
-      width: `${percent}%`,
-    } as ViewStyle;
-    const style = {
-      cursor: !readOnly ? 'pointer' : 'inherit',
-      flexDirection: 'row', // display: 'inline-block',
-      position: 'relative',
-      marginLeft: 5,
-    } as ViewStyle;
+    const styles = StyleSheet.create({
+      bgIconContainerStyle: showbgIcon ? {} : { visibility: 'hidden' } as ViewStyle,
+      iconContainerStyle: {
+        flexDirection: 'row', // display: 'inline-block',
+        position: 'absolute',
+        overflow: 'hidden',
+        top: 0,
+        ['left']: 0,
+        width: `${percent}%`,
+      },
+      style: {
+        cursor: !readOnly ? 'pointer' : 'inherit',
+        flexDirection: 'row', // display: 'inline-block',
+        position: 'relative',
+        marginLeft: 5,
+      },
+    });
 
     // function handleMouseClick(event: any) {
     //   if (onClick) {
@@ -88,12 +91,12 @@ class Icon extends React.PureComponent<Props> {
     return (
       <View
         style={
-          index === 0 ? Object.assign({}, style, { marginLeft: 0 }) : style
+          index === 0 ? Object.assign({}, styles.style, { marginLeft: 0 }) : styles.style
         }
         {...panResponder.panHandlers}
       >
-        <View style={bgIconContainerStyle}>{renderIcon(emptyIcon)}</View>
-        <View style={iconContainerStyle}>{renderIcon(icon)}</View>
+        <View style={styles.bgIconContainerStyle}>{renderIcon(emptyIcon)}</View>
+        <View style={styles.iconContainerStyle}>{renderIcon(icon)}</View>
       </View>
     );
   }
