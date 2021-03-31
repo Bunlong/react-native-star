@@ -13,7 +13,7 @@ interface Props {
   percent: number;
   icon: string | object | JSX.Element;
   emptyIcon: string | object | JSX.Element;
-  onClick?: (index: number, event: any) => void;
+  onStart?: (index: number, event: any, gesture: any) => void;
   onMouseMove?: (index: number, event: any) => void;
   onTouchEnd?: (index: number, event: any) => void;
   onTouchMove?: (index: number, event: any) => void;
@@ -22,8 +22,8 @@ interface Props {
 class Icon extends React.PureComponent<Props> {
   render() {
     const {
-      readOnly,
-      onClick,
+      // readOnly,
+      onStart,
       index,
       // onMouseMove,
       // onTouchEnd,
@@ -33,7 +33,7 @@ class Icon extends React.PureComponent<Props> {
     } = this.props;
     const showbgIcon = percent < 100;
     const styles = StyleSheet.create({
-      bgIconContainerStyle: showbgIcon ? {} : { visibility: 'hidden' } as ViewStyle,
+      bgIconContainerStyle: showbgIcon ? {} : { /* visibility: 'hidden' */ } as ViewStyle,
       iconContainerStyle: {
         flexDirection: 'row', // display: 'inline-block',
         position: 'absolute',
@@ -43,7 +43,7 @@ class Icon extends React.PureComponent<Props> {
         width: `${percent}%`,
       },
       style: {
-        cursor: !readOnly ? 'pointer' : 'inherit',
+        // cursor: !readOnly ? 'pointer' : 'inherit',
         flexDirection: 'row', // display: 'inline-block',
         position: 'relative',
         marginLeft: 5,
@@ -72,10 +72,8 @@ class Icon extends React.PureComponent<Props> {
     const panResponder = PanResponder.create( {
       onStartShouldSetPanResponder: () => true,
       onPanResponderGrant: ( event, gesture ) => {
-        // onClick
-        console.log(event)
-        if (onClick) {
-          onClick(index, gesture);
+        if (onStart) {
+          onStart(index, event, gesture);
         }
       },
       // onPanResponderMove: ( event, gesture ) => {

@@ -51,15 +51,14 @@ class StarIcon extends React.PureComponent<Props, State> {
     });
   }
 
-  calculateHoverPercentage(event: any) {
-    const clientX = event.x0
-    // const targetRect = event.target.getBoundingClientRect();
-    const delta = clientX;
-    return delta < 0 ? 0 : delta;
+  calculateHoverPercentage(event: any, gesture: any) {
+    const clientX = gesture.x0;
+    const delta = clientX - event.nativeEvent.locationX;
+    return delta < 0 ? 0 : delta / event.nativeEvent.pageX;
   }
 
-  calculateDisplayValue(iconIndex: number, event: any) {
-    const percentage = this.calculateHoverPercentage(event);
+  calculateDisplayValue(iconIndex: number, event: any, gesture: any) {
+    const percentage = this.calculateHoverPercentage(event, gesture);
     const fraction =
       Math.ceil((percentage % 1) * this.props.fraction) / this.props.fraction;
     const precision = 10 ** 3;
@@ -73,22 +72,22 @@ class StarIcon extends React.PureComponent<Props, State> {
       : 1 / this.props.fraction;
   }
 
-  iconClick(iconIndex: number, event: any) {
-    const value = this.calculateDisplayValue(iconIndex, event);
+  iconClick(iconIndex: number, event: any, gesture: any) {
+    const value = this.calculateDisplayValue(iconIndex, event, gesture);
     this.props.onClick(value, event);
   }
 
-  iconMouseMove(iconIndex: number, event: any) {
-    const value = this.calculateDisplayValue(iconIndex, event);
+  iconMouseMove(iconIndex: number, event: any, gesture: any) {
+    const value = this.calculateDisplayValue(iconIndex, event, gesture);
     this.setState({
       interacting: !this.props.readOnly,
       displayValue: value,
     });
   }
 
-  iconEnd(iconIndex: number, event: any) {
+  iconEnd(iconIndex: number, event: any, gesture: any) {
     if (!this.props.quiet) {
-      this.iconClick(iconIndex, event);
+      this.iconClick(iconIndex, event, gesture);
       event.preventDefault();
     }
     this.onMouseLeave();
@@ -162,10 +161,10 @@ class StarIcon extends React.PureComponent<Props, State> {
           }
           percent={percent}
           {...(!readOnly && {
-            onClick: this.iconClick,
-            onMouseMove: this.iconMouseMove,
-            onTouchMove: this.iconMouseMove,
-            onTouchEnd: this.iconEnd,
+            onStart: this.iconClick,
+            // onMouseMove: this.iconMouseMove,
+            // onTouchMove: this.iconMouseMove,
+            // onTouchEnd: this.iconEnd,
           })}
         />,
       );
