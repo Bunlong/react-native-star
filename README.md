@@ -12,10 +12,6 @@ npm install react-native-star
 
 ```js
 import Star from "react-native-star";
-
-// ...
-
-const result = await Star.multiply(3, 7);
 ```
 
 ## Contributing
@@ -27,6 +23,8 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 MIT
 
 <!--
+
+git commit -m "your-msg" --no-verify
 
 Get started with the project:
 
