@@ -1,14 +1,3 @@
-// import * as React from 'react';
-// import { View, Text } from 'react-native';
-
-// export default function App() {
-//   return (
-//     <View>
-//       <Text>Hello World</Text>
-//     </View>
-//   );
-// }
-
 import React from 'react';
 import StarIcon from './StarIcon';
 import { calculateTotalIcons } from './utils';
@@ -24,7 +13,6 @@ import {
   DEFAULT_OTHER,
 } from './models';
 
-// RATING IMAGES WITH STATIC BACKGROUND COLOR (white)
 const EMPTY_THIN_STAR = require( '../static/images/empty-thin-star.png');
 const THIN_STAR = require( '../static/images/thin-star.png');
 
@@ -172,7 +160,6 @@ class Star extends React.PureComponent<Props, State> {
     const { min, step, fraction } = this.props;
     translatedValue =
       displayValue * (step || DEFAULT_STEP) + (min || DEFAULT_MIN);
-    // minimum value cannot be equal to start, since it's exclusive
     return translatedValue === min
       ? translatedValue + 1 / (fraction || DEFAULT_FRACTION)
       : translatedValue;
@@ -182,12 +169,10 @@ class Star extends React.PureComponent<Props, State> {
     const { shape, emptyIcon } = this.props;
     if (!emptyIcon) {
       return shape === 'fat' ? (
-        // <FatStar style={emptyIconStyle} />
         <Text>Hello</Text>
       ) : (
         <View>
           {this.renderStar()}
-          {/* <ThinStar style={emptyIconStyle} /> */}
         </View>
       );
     }
@@ -198,7 +183,6 @@ class Star extends React.PureComponent<Props, State> {
     const { shape, icon } = this.props;
     if (!icon) {
       return shape === 'fat' ? (
-        // <FatStar style={iconStyle} />
         <Text>1</Text>
       ) : (
         <View>
@@ -213,10 +197,8 @@ class Star extends React.PureComponent<Props, State> {
     const { shape, placeholderIcon } = this.props;
     if (!placeholderIcon) {
       return shape === 'fat' ? (
-        // <FatStar style={iconStyle} />
         <Text>Hello</Text>
       ) : (
-        // <ThinStar style={iconStyle} />
         <Text>Hello</Text>
       );
     }
@@ -262,7 +244,6 @@ class Star extends React.PureComponent<Props, State> {
         onClick={this.handleClick}
         onHover={this.handleHover}
       />
-      // <Text>Hello</Text>
     );
   }
 }

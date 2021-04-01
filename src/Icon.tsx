@@ -14,6 +14,7 @@ interface Props {
   icon: string | object | JSX.Element;
   emptyIcon: string | object | JSX.Element;
   onStart?: (index: number, event: any, gesture: any) => void;
+  onFinish?: (index: number, event: any, gesture: any) => void;
   onMouseMove?: (index: number, event: any) => void;
   onTouchEnd?: (index: number, event: any) => void;
   onTouchMove?: (index: number, event: any) => void;
@@ -24,6 +25,7 @@ class Icon extends React.PureComponent<Props> {
     const {
       // readOnly,
       onStart,
+      onFinish,
       index,
       // onMouseMove,
       // onTouchEnd,
@@ -71,7 +73,7 @@ class Icon extends React.PureComponent<Props> {
 
     const panResponder = PanResponder.create( {
       onStartShouldSetPanResponder: () => true,
-      onPanResponderGrant: ( event, gesture ) => {
+      onPanResponderGrant: (event, gesture) => {
         if (onStart) {
           onStart(index, event, gesture);
         }
@@ -80,10 +82,11 @@ class Icon extends React.PureComponent<Props> {
       //   // onTouchMove
       //   console.log('22222222222222222222');
       // },
-      // onPanResponderRelease: () => {
-      //   // onTouchEnd
-      //   console.log('33333333333333333333');
-      // }
+      onPanResponderRelease: (event, gesture) => {
+        if (onFinish) {
+          onFinish(index, event, gesture);
+        }
+      }
     });
 
     return (
