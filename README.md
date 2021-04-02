@@ -20,6 +20,14 @@ yarn add react-native-star
 
 ```js
 import { Star } from "react-native-star";
+
+export default function App() {
+  return (
+    <Star
+      onChange={(value) => {console.log(value)}}
+    />
+  );
+}
 ```
 
 ## ❗ Issues
@@ -64,7 +72,6 @@ Run the example app on Android:
 https://reactnative.dev/docs/running-on-device
 
 -->
-
 
 <!--
 
