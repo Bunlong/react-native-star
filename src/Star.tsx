@@ -13,8 +13,8 @@ import {
   DEFAULT_OTHER,
 } from './models';
 
-const EMPTY_THIN_STAR = require('../static/images/empty-thin-star.png');
-const THIN_STAR = require('../static/images/thin-star.png');
+const EMPTY_THIN_STAR = require('./static/images/empty-thin-star.png');
+const THIN_STAR = require('./static/images/thin-star.png');
 
 export interface ITYPES {
   [propertyName: string]: any;
