@@ -105,7 +105,7 @@ class StarIcon extends React.PureComponent<Props, State> {
       return this.props.onHover();
     }
 
-    if (this.state.interacting && prevProps.value == this.props.value) {
+    if (this.state.interacting && prevProps.value === this.props.value) {
       this.props.onHover(this.state.displayValue);
     }
   }
@@ -166,7 +166,7 @@ class StarIcon extends React.PureComponent<Props, State> {
             // onTouchMove: this.iconMouseMove,
             // onTouchEnd: this.iconEnd,
           })}
-        />,
+        />
       );
     }
 
@@ -174,7 +174,7 @@ class StarIcon extends React.PureComponent<Props, State> {
       <View
         style={{
           ...style,
-          flexDirection: 'row', // display: 'inline-block',
+          flexDirection: 'row',
           outline: 'none',
         }}
       >

@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  ViewStyle,
-  PanResponder
-} from 'react-native';
+import { StyleSheet, View, ViewStyle, PanResponder } from 'react-native';
 import { renderIcon } from './utils';
 
 interface Props {
@@ -35,7 +30,11 @@ class Icon extends React.PureComponent<Props> {
     } = this.props;
     const showbgIcon = percent < 100;
     const styles = StyleSheet.create({
-      bgIconContainerStyle: showbgIcon ? {} : { /* visibility: 'hidden' */ } as ViewStyle,
+      bgIconContainerStyle: showbgIcon
+        ? {}
+        : ({
+            /* visibility: 'hidden' */
+          } as ViewStyle),
       iconContainerStyle: {
         flexDirection: 'row', // display: 'inline-block',
         position: 'absolute',
@@ -71,7 +70,7 @@ class Icon extends React.PureComponent<Props> {
     //   }
     // }
 
-    const panResponder = PanResponder.create( {
+    const panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onPanResponderGrant: (event, gesture) => {
         if (onStart) {
@@ -86,7 +85,7 @@ class Icon extends React.PureComponent<Props> {
         if (onFinish) {
           onFinish(index, event, gesture);
         }
-      }
+      },
     });
 
     return (

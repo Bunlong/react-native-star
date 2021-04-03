@@ -5,7 +5,11 @@ import { Star } from 'react-native-star';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Star onChange={(value) => {console.log(value)}}/>
+      <Star
+        onChange={(value) => {
+          console.log(value);
+        }}
+      />
     </View>
   );
 }

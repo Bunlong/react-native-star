@@ -13,8 +13,8 @@ import {
   DEFAULT_OTHER,
 } from './models';
 
-const EMPTY_THIN_STAR = require( '../static/images/empty-thin-star.png');
-const THIN_STAR = require( '../static/images/thin-star.png');
+const EMPTY_THIN_STAR = require('../static/images/empty-thin-star.png');
+const THIN_STAR = require('../static/images/thin-star.png');
 
 export interface ITYPES {
   [propertyName: string]: any;
@@ -24,12 +24,12 @@ const TYPES: ITYPES = {
   empty_star: {
     source: EMPTY_THIN_STAR,
     color: '#f1c40f',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   star: {
     source: THIN_STAR,
     color: '#f1c40f',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
 };
 
@@ -48,7 +48,6 @@ export const iconStyle = {
   fill: color.selectiveYellow,
   stroke: color.selectiveYellow,
 };
-
 
 interface Props {
   id?: number;
@@ -124,11 +123,9 @@ class Star extends React.PureComponent<Props, State> {
   }
 
   renderStar(type = 'empty_star') {
-    const {source} = TYPES[type];
+    const { source } = TYPES[type];
 
-    return (
-      <Image source={source} style={{ width: 40, height: 40 }} />
-    );
+    return <Image source={source} style={{ width: 40, height: 40 }} />;
   }
 
   handleClick(value?: number) {
@@ -142,7 +139,7 @@ class Star extends React.PureComponent<Props, State> {
         {
           value: newValue,
         },
-        () => this.props.onChange(this.state.value),
+        () => this.props.onChange(this.state.value)
       );
     }
   }
@@ -171,9 +168,7 @@ class Star extends React.PureComponent<Props, State> {
       return shape === 'fat' ? (
         <Text>Hello</Text>
       ) : (
-        <View>
-          {this.renderStar()}
-        </View>
+        <View>{this.renderStar()}</View>
       );
     }
     return emptyIcon;
@@ -185,9 +180,7 @@ class Star extends React.PureComponent<Props, State> {
       return shape === 'fat' ? (
         <Text>1</Text>
       ) : (
-        <View>
-          {this.renderStar('star')}
-        </View>
+        <View>{this.renderStar('star')}</View>
       );
     }
     return icon;
@@ -196,11 +189,7 @@ class Star extends React.PureComponent<Props, State> {
   renderPlaceholderIcon() {
     const { shape, placeholderIcon } = this.props;
     if (!placeholderIcon) {
-      return shape === 'fat' ? (
-        <Text>Hello</Text>
-      ) : (
-        <Text>Hello</Text>
-      );
+      return shape === 'fat' ? <Text>Hello</Text> : <Text>Hello</Text>;
     }
     return placeholderIcon;
   }
@@ -229,11 +218,11 @@ class Star extends React.PureComponent<Props, State> {
         totalIcons={calculateTotalIcons(
           min || DEFAULT_MIN,
           max || DEFAULT_MAX,
-          step || DEFAULT_STEP,
+          step || DEFAULT_STEP
         )}
         value={this.tranlateValueToDisplayValue(this.state.value)}
         placeholderValue={this.tranlateValueToDisplayValue(
-          this.props.placeholderRating || DEFAULT_OTHER,
+          this.props.placeholderRating || DEFAULT_OTHER
         )}
         readOnly={readOnly || DEFAULT_READONLY}
         quiet={quiet || DEFAULT_QUIET}
