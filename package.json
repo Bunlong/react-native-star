@@ -32,9 +32,14 @@
     "bootstrap": "yarn example && yarn && yarn pods"
   },
   "keywords": [
+    "react-native-star",
+    "react-star",
+    "react",
     "react-native",
     "ios",
-    "android"
+    "android",
+    "react-native-rating",
+    "rating"
   ],
   "repository": "https://github.com/Bunlong/react-native-star",
   "author": "Bunlong <bunlong.van@gmail.com> (https://github.com/Bunlong)",
